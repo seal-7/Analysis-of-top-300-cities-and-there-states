@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>TOP 500 cities</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="bootstrap.min.css">
+  <script src="jquery.min.js"></script>
+  <script src="bootstrap.min.js"></script>
+</head>
+<body background="bg.png">
+
+<script type="text/javascript">
+var glbval=0;
+function newSite() {
+    var sites = ['start.html',
+    			       '1.html',          
+                 'numberOfCitiesInStates.html',               
+                 '2.html',
+                 'PopulationOfStates.html',
+                 '3.html',
+                 'ComparisionSexRatio.html',
+                 '4.html',                 
+                 'Male_Female_1_Obj.html',
+                 '5.html',                 
+                 'malePopulation0-6.html',  
+                 '6.html',               
+                 'femalePopulation0-6.html',                 
+                 '7.html',
+                 'literatuesMaleAndFemales.html',
+                 '8.html',
+                 'graduatesMaleAndFemale.html',                 
+                 'Comparision_litearte and graduate.html',
+                 'Map_of_India.html',
+                  '9.html'];
+      glbval=(glbval+1)%20;
+      console.log(glbval);
+    document.getElementById('myIframe').src = sites[glbval];
+}
+function prevSite() {
+    var sites = ['start.html',
+                 '1.html',          
+                 'numberOfCitiesInStates.html',               
+                 '2.html',
+                 'PopulationOfStates.html',
+                 '3.html',
+                 'ComparisionSexRatio.html',
+                 '4.html',                 
+                 'Male_Female_1_Obj.html',
+                 '5.html',                 
+                 'malePopulation0-6.html',  
+                 '6.html',               
+                 'femalePopulation0-6.html',                 
+                 '7.html',
+                 'literatuesMaleAndFemales.html',
+                 '8.html',
+                 'graduatesMaleAndFemale.html',                 
+                 'Comparision_litearte and graduate.html',
+                 'Map_of_India.html',
+                  '9.html'];
+      glbval=(glbval-1);
+      if(glbval=== -1){
+      	glbval=19;
+      }
+      console.log(glbval+"hello");
+
+    document.getElementById('myIframe').src = sites[glbval];
+}    
+</script>
+
+<div class="container">
+<br>
+<br>
+<br>
+<br> 
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+     <!--  <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li> -->
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+      <div class="item active">
+        <iframe id="myIframe" src="start.html" width="100%" height="650"></iframe>
+      </div>
+
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" data-slide="prev" onClick="prevSite()">
+      <!-- <span class="glyphicon glyphicon-chevron-left"></span> -->
+      <span class="sr-only" >Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" data-slide="next" onClick="newSite()">
+      <!-- <span class="glyphicon glyphicon-chevron-right"></span> -->
+      <span class="sr-only" >Next</span>
+    </a>
+  </div>  
+</div>
+</body>
+</html>

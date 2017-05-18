@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="bootstrap.min.css">
+  <script src="jquery.min.js"></script>
+  <script src="bootstrap.min.js"></script>
+</head>
+<body>
+<center>
+<br>
+<br>
+<h1>
+  Children are the future of this country.
+  Next is a pie chart representing the male population of children of age group(0-6).
+</h1>
+</center>
+<center>
+<div>
+<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Show Code</button>
+</div>
+</center>
+<!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">      
+          <button type="button" class="close" data-dismiss="modal">&times;</button>       
+          <h4 class="modal-title">CODE</h4>
+        </div>
+        <div class="modal-body">
+<pre>
+	#Import Library
+library(highcharter)
+
+
+#Read from File
+Data = read.csv("cities_r2.csv")
+
+#Declare Array 
+states=unique(Data$state_name)
+male06population = 0
+for (i in 1:length(states)) {
+  male06population[i]=0
+  for (j in 1:length(Data$state_name)) {
+    if(identical(as.character(states[i]),as.character(Data$state_name[j]))){
+      male06population[i]=male06population[i]+as.integer(Data$X0.6_population_male[j])
+      
+    }
+  }
+}
+
+DataObj = data.frame(states,male06population)
+
+#Draw Graph
+hc <- hchart(DataObj,"pie", hcaes(x = states, y = male06population, group = 1),name="Male 0-6 Population")
+
+
+
+print(hc)
+</pre>
+</div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

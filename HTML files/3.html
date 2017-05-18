@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="bootstrap.min.css">
+  <script src="jquery.min.js"></script>
+  <script src="bootstrap.min.js"></script>
+</head>
+<body>
+<center>
+<br>
+<br>
+<h1>
+  Population of the women tells a lot about the state
+</h1>
+</center>
+<center>
+<div>
+<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Show Code</button>
+</div>
+</center>
+<!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">      
+          <button type="button" class="close" data-dismiss="modal">&times;</button>       
+          <h4 class="modal-title">CODE</h4>
+        </div>
+        <div class="modal-body">
+<pre>
+	#Import Library
+library(quantmod)
+library(highcharter)
+
+#Read from File
+Data = read.csv("SexRatios.csv")
+
+
+#Declare Array 
+sexRatio <- Data$Sex_Ratio
+childSexRatio <- Data$Child_Sex_Ratio
+
+#Draw Graph
+hc <- highchart() %>% 
+  hc_xAxis(categories=Data$States) %>% 
+  hc_add_series(name = "Adults Sex Ratio", data = as.double(sexRatio)) %>% 
+  hc_add_series(name = "Child Sex Ratio", data = as.double(childSexRatio)) %>% 
+  hc_title(text="Comparision of sex ratios of States") %>%
+  hc_add_theme(hc_theme_flat()) %>%
+
+#Convert into 3D
+#hc <- hc %>% 
+#  hc_chart(type = "column",
+#           options3d = list(enabled = TRUE, beta =10, alpha = 10))
+
+print(hc)
+</pre>
+</div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
+
